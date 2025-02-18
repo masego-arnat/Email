@@ -59,7 +59,34 @@ def send_periodic_email():
         #FraudEarlyDetection@fnb.co.za
     ]
     subject = "RE: 3D Authorization failed - [External Email] [REF:20241212_145804532]"
-    body = "This is an automated email sent from Python every 6 hours!"
+    
+    # Create a more detailed email body
+    body = f"""
+Dear Team,
+
+This is an automated notification regarding the 3D Authorization failure incident.
+
+Transaction Details:
+- Date: {datetime.now().strftime('%Y-%m-%d')}
+- Time: {datetime.now().strftime('%H:%M:%S')}
+- Reference: REF:20241212_145804532
+- Status: Failed
+
+Additional Information:
+- Error Type: 3D Authorization Error
+- Impact: Transaction could not be completed
+- Priority: High
+
+Required Actions:
+1. Please review the transaction logs
+2. Verify the 3D secure settings
+3. Check for any system anomalies
+
+If you need any further information or clarification, please don't hesitate to contact us.
+
+Best regards,
+Security Team
+"""
 
     while True:
         current_time = datetime.now()

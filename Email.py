@@ -1,6 +1,8 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import time
+from datetime import datetime
 
 def send_email(sender_email, sender_password, recipient_emails, cc_emails, subject, body):
     """
@@ -36,7 +38,7 @@ def send_email(sender_email, sender_password, recipient_emails, cc_emails, subje
         all_recipients = [recipient_emails] + cc_emails
         text = message.as_string()
         server.sendmail(sender_email, all_recipients, text)
-        print("Email sent successfully!")
+        print(f"Email sent successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}!")
         
     except Exception as e:
         print(f"Error sending email: {e}")
@@ -44,23 +46,23 @@ def send_email(sender_email, sender_password, recipient_emails, cc_emails, subje
     finally:
         server.quit()
 
-# Example usage
-if __name__ == "__main__":
-    # Replace these with your actual details
+def send_periodic_email():
+    # Email configuration
     sender_email = "romarioarnat15@gmail.com"
-    sender_password = "jozt lwtx clwy egzp"  # Use App Password, not your regular password
-    
-    # Primary recipient
+    sender_password = "jozt lwtx clwy egzp"
     recipient_email = "romarioarnat15@gmail.com"
-    
-    # CC recipients
     cc_emails = [
         "rarnat@yahoo.com",
         "romarioarnat15@gmail.com",
-         "romarioarnat15@gmail.com"
+        "romarioarnat15@gmail.com"
     ]
-    
-    subject = "Test Email"
-    body = "This is a test email sent from Python!"
-    
-    send_email(sender_email, sender_password, recipient_email, cc_emails, subject, body)
+    subject = "Periodic Test Email"
+    body = "This is an automated email sent from Python every 6 hours!"
+
+    while True:
+        send_email(sender_email, sender_password, recipient_email, cc_emails, subject, body)
+        time.sleep(6 * 3600)  # Sleep for 6 hours (6 * 3600 seconds)
+
+if __name__ == "__main__":
+    print("Starting email sender. Press Ctrl+C to stop.")
+    send_periodic_email()

@@ -2,7 +2,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def send_email(sender_email, sender_password, recipient_emails, cc_emails, subject, body):
     """
@@ -60,9 +60,16 @@ def send_periodic_email():
     body = "This is an automated email sent from Python every 6 hours!"
 
     while True:
-        send_email(sender_email, sender_password, recipient_email, cc_emails, subject, body)
-        time.sleep(6 * 3600)  # Sleep for 6 hours (6 * 3600 seconds)
+        current_time = datetime.now()
+        # Check if it's weekend (5 = Saturday, 6 = Sunday)
+        if current_time.weekday() not in [5, 6]:
+            send_email(sender_email, sender_password, recipient_email, cc_emails, subject, body)
+            print(f"Next email will be sent at {(current_time + timedelta(hours=6)).strftime('%Y-%m-%d %H:%M:%S')}")
+        else:
+            print(f"Skipping email send - it's weekend ({current_time.strftime('%A')})")
+        
+        time.sleep(6 * 3600)  # Sleep for 6 hours
 
 if __name__ == "__main__":
-    print("Starting email sender. Press Ctrl+C to stop.")
+    print("Starting email sender (Monday-Friday only). Press Ctrl+C to stop.")
     send_periodic_email()

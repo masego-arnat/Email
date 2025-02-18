@@ -50,13 +50,13 @@ def send_periodic_email():
     # Email configuration
     sender_email = "romarioarnat15@gmail.com"
     sender_password = "jozt lwtx clwy egzp"
-    recipient_email = "romarioarnat15@gmail.com"
-    #recipient_email = "infonam@fnbnamibia.com.na"
+    # recipient_email = "romarioarnat15@gmail.com"
+    recipient_email = "infonam@fnbnamibia.com.na"
     cc_emails = [
-        "rarnat@yahoo.com",
-        "romarioarnat15@gmail.com",
-        #carenamibia@fnbnamibia.com.na,
-        #FraudEarlyDetection@fnb.co.za
+        # "rarnat@yahoo.com",
+        # "romarioarnat15@gmail.com",
+        "carenamibia@fnbnamibia.com.na",
+        "FraudEarlyDetection@fnb.co.za"
     ]
     subject = "RE: 3D Authorization failed - [External Email] [REF:20241212_145804532]"
     

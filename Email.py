@@ -76,7 +76,6 @@ Additional Information:
 - Impact: Transaction could not be completed
 - Priority: High
 
-
 If you need any further information or clarification, please don't hesitate to contact me.
 
 Best regards,

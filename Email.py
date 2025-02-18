@@ -62,14 +62,13 @@ def send_periodic_email():
     
     # Create a more detailed email body
     body = f"""
-Dear Team,
+Hi  There,
 
-This is an automated notification regarding the 3D Authorization failure incident.
+This is an automated notification regarding my unresolved 3D Authorization failure incident.
+To ensure this matter receives the necessary attention, I have set up an automatic follow-up every six hours until the issue is resolved.
 
 Transaction Details:
-- Date: {datetime.now().strftime('%Y-%m-%d')}
-- Time: {datetime.now().strftime('%H:%M:%S')}
-- Reference: REF:20241212_145804532
+- Reference INC8277801
 - Status: Failed
 
 Additional Information:
@@ -77,15 +76,11 @@ Additional Information:
 - Impact: Transaction could not be completed
 - Priority: High
 
-Required Actions:
-1. Please review the transaction logs
-2. Verify the 3D secure settings
-3. Check for any system anomalies
 
-If you need any further information or clarification, please don't hesitate to contact us.
+If you need any further information or clarification, please don't hesitate to contact me.
 
 Best regards,
-Security Team
+Romario
 """
 
     while True:
